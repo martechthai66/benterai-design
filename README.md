@@ -12,6 +12,7 @@ Design system and approved screen designs for **BenterAI — Build your own Ente
 | `design/benterai-ds/components/` | `bundle.css` (component styles) · `index.d.ts` (props) · one README per component · `bundle.js` (reference prototype, not production) |
 | `design/benterai-ds/screenshots/` | 100+ PNGs — every state of all 9 screens, desktop/mobile, light/dark, TH/EN, font +4 |
 | `design/benterai-ds/preview/` | Clickable viewer of every screen and the 2-flow prototype |
+| `design/benterai-ds/fonts/` | Self-hosted IBM Plex Sans Thai / Sans / Mono (woff2 + `fonts.css`, SIL OFL) |
 | `design/benterai-ds/assets/logos/` | Logo, reversed logo, wordmark, spark |
 
 ## View the screens locally

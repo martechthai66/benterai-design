@@ -13,6 +13,7 @@ The design package is in design/benterai-ds/. Read these first, in this order:
 5. docs/source-brief.md – the original system brief (flows, URLs, permissions, API) that must be preserved
 
 Source of truth for values and styling:
+- fonts/ – self-hosted IBM Plex Sans Thai / Sans / Mono woff2 + fonts.css (OFL)
 - tokens/tokens.json (+ tokens/tokens.css) – every colour (light + dark), type size, spacing, radius, shadow, breakpoint, motion token
 - components/bundle.css – production-ready CSS for every component and state (class prefix ba-)
 - components/index.d.ts – props of every component
@@ -25,7 +26,7 @@ Rules:
 - Keep every existing URL, permission gate, API call, SSE handling and polling behaviour. The API is unchanged.
 - Implement tokens as CSS custom properties with the SAME names in apps/web/src/app/globals.css (:root + [data-theme="dark"]).
 - --font-adjust is in pt (0–4, default 1pt); every font-size = calc(base + var(--font-adjust)).
-- Font: IBM Plex Sans Thai (400/500/600/700) + IBM Plex Mono.
+- Font: IBM Plex Sans Thai (400/500/600/700) + IBM Plex Mono. Self-host the files in fonts/ (copy fonts/*.woff2 + fonts.css into apps/web/public/fonts/ and load fonts.css first); do not depend on Google Fonts at runtime.
 - Icons: lucide-react using the mapping in docs/handoff.md section 5.
 - Logos: copy assets/logos/*.png into apps/web/public/brand/.
 - Thai IME: never send on Enter while composing.

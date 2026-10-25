@@ -5,7 +5,7 @@
 ## 1 · Tokens > CSS variables
 
 ▪️ สร้าง `:root` / `[data-theme="dark"]` ใน `apps/web/src/app/globals.css` จาก `tokens.json` ด้วยชื่อเดียวกัน (`--canvas`, `--ink`, `--brand-strong`, `--sidebar`, `--space-4`, `--radius-md`, `--shadow-md` …)
-▪️ แทนค่าระบบเดิม — `#0755f5` > `--brand-strong` (#1d5bd8) · ตัวอักษร `#152a50` > `--ink` (#1a1d24) · พื้น `#f8faff` > `--canvas` (#ffffff) และ `--surface-subtle` · `system-ui` > `--font-sans` (IBM Plex Sans Thai ผ่าน Google Fonts หรือ self-host woff2)
+▪️ แทนค่าระบบเดิม — `#0755f5` > `--brand-strong` (#1d5bd8) · ตัวอักษร `#152a50` > `--ink` (#1a1d24) · พื้น `#f8faff` > `--canvas` (#ffffff) และ `--surface-subtle` · `system-ui` > `--font-sans` (IBM Plex Sans Thai — self-host จากโฟลเดอร์ `fonts/` ที่มี woff2 + `fonts.css` ให้แล้ว ไม่พึ่ง Google Fonts ตอนใช้งานจริง)
 ▪️ คง `--font-adjust` เดิม แต่เปลี่ยนค่าเป็นหน่วย `pt` (0–4, default `1pt`) และให้ทุก font-size เป็น `calc(<base> + var(--font-adjust))` ตามตัวแปร `--ba-fs-*` ใน `bundle.css`
 ▪️ Breakpoints คงค่าเดิม `760px` (`bp-md`) และ `1100px` (`bp-lg`) เพิ่ม `480px` และ `1440px`
 ▪️ Theme, ภาษา, font size ยังเก็บใน localStorage เหมือนเดิม; ตั้ง `data-theme` บน `<html>`
