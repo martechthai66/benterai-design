@@ -1,0 +1,115 @@
+/* BenterAI — generated from tokens.json (light = :root, dark = [data-theme="dark"]). */
+:root,[data-theme="light"]{
+  --canvas:#ffffff;
+  --surface-subtle:#f5f7fa;
+  --surface-sunken:#eef2f8;
+  --surface-raised:#ffffff;
+  --line:#e2e7ef;
+  --line-strong:#8c95a6;
+  --ink:#1a1d24;
+  --ink-muted:#586174;
+  --ink-subtle:#646d7d;
+  --brand:#3479fa;
+  --brand-strong:#1d5bd8;
+  --brand-hover:#174bb5;
+  --on-brand:#ffffff;
+  --brand-soft:#ebf2ff;
+  --spark:#6aa6ff;
+  --success:#11784a;
+  --success-soft:#e5f5ec;
+  --warning:#8f5600;
+  --warning-soft:#fff3d9;
+  --danger:#c42b2b;
+  --danger-soft:#fdecec;
+  --sidebar:#0b1f3f;
+  --sidebar-hover:#14305a;
+  --sidebar-active:#1b3a6b;
+  --sidebar-line:#1d3358;
+  --sidebar-ink:#eef3fa;
+  --sidebar-muted:#a3b3cb;
+  --sidebar-accent:#6aa6ff;
+  --focus-ring:var(--brand-strong);
+  --overlay:rgba(15, 20, 30, 0.45);
+  --shadow-sm:0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md:0 2px 8px rgba(11, 31, 63, 0.08), 0 1px 2px rgba(11, 31, 63, 0.06);
+  --shadow-lg:0 12px 32px rgba(11, 31, 63, 0.18), 0 2px 6px rgba(11, 31, 63, 0.08)
+}
+
+[data-theme="dark"]{
+  --canvas:#0f1218;
+  --surface-subtle:#141821;
+  --surface-sunken:#1c212c;
+  --surface-raised:#1a1f29;
+  --line:#262c38;
+  --line-strong:#5d6677;
+  --ink:#e9edf4;
+  --ink-muted:#a6b0c0;
+  --ink-subtle:#8d97a8;
+  --brand:#5a95ff;
+  --brand-strong:#7eaaff;
+  --brand-hover:#a1c1ff;
+  --on-brand:#0a1430;
+  --brand-soft:#17284a;
+  --spark:#8ab8ff;
+  --success:#4cc38a;
+  --success-soft:#102a1e;
+  --warning:#f0b44c;
+  --warning-soft:#2f2510;
+  --danger:#ff7f76;
+  --danger-soft:#3b1819;
+  --sidebar:#0a0f1a;
+  --sidebar-hover:#141c2c;
+  --sidebar-active:#1a2740;
+  --sidebar-line:#1c2433;
+  --sidebar-ink:#e9edf4;
+  --sidebar-muted:#97a3b6;
+  --sidebar-accent:#8ab8ff;
+  --focus-ring:var(--brand-strong);
+  --overlay:rgba(0, 0, 0, 0.6);
+  --shadow-sm:0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:0 4px 16px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg:0 16px 48px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.5)
+}
+
+:root{
+  --space-0-5:2px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --radius-xs:2px;
+  --radius-sm:4px;
+  --radius-md:6px;
+  --radius-lg:8px;
+  --radius-xl:12px;
+  --radius-pill:999px;
+  --bp-sm:480px;
+  --bp-md:760px;
+  --bp-lg:1100px;
+  --bp-xl:1440px;
+  --width-sidebar:272px;
+  --width-sidebar-compact:240px;
+  --width-chat:768px;
+  --width-content:1120px;
+  --height-header:56px;
+  --height-control:40px;
+  --size-touch:44px;
+  --duration-fast:120ms;
+  --duration-base:180ms;
+  --duration-slow:280ms;
+  --ease-standard:cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit:cubic-bezier(0.4, 0, 1, 1);
+  --z-sticky:10;
+  --z-drawer:40;
+  --z-menu:50;
+  --z-dialog:60;
+  --z-toast:70;
+  --font-sans:"IBM Plex Sans Thai", "IBM Plex Sans", "Noto Sans Thai", system-ui, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace
+}
