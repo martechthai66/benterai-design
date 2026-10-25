@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenterAI — screen preview</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-subtle); }
+  .nav { position: sticky; top: 0; z-index: 100; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; padding: 10px 16px; background: var(--sidebar); }
+  .nav strong { color: var(--sidebar-ink); margin-right: 10px; font-family: var(--font-sans); }
+  .nav button { font: 500 13px var(--font-sans); padding: 6px 10px; border-radius: 4px; border: 0; background: transparent; color: var(--sidebar-ink); cursor: pointer; }
+  .nav button[aria-pressed="true"] { background: var(--sidebar-active); box-shadow: inset 0 -2px 0 var(--sidebar-accent); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  /* Open via a local server (e.g. `npx serve design/benterai-ds` then /preview/) so relative logo paths resolve. */
+  var B = window.BenterAI, h = React.createElement;
+  var SCREENS = {
+      'ScreenLogin': { label: "Login", el: function () { return h(B.ScreenFrame, {route: 'login', states: [{"id": "default", "label": "ว่าง"}, {"id": "loading", "label": "กำลังเข้าสู่ระบบ"}, {"id": "error", "label": "รหัสผิด"}, {"id": "ratelimit", "label": "Rate limit"}, {"id": "suspended", "label": "บัญชีถูกระงับ"}, {"id": "pending", "label": "รออนุมัติ"}]}); } },
+      'ScreenReset': { label: "Reset password", el: function () { return h(B.ScreenFrame, {route: 'reset', states: [{"id": "request", "label": "ขอลิงก์"}, {"id": "sent", "label": "ส่งแล้ว"}, {"id": "token", "label": "ตั้งรหัสใหม่ (?token)"}, {"id": "token-weak", "label": "รหัสสั้นเกิน", "variant": "token-weak"}, {"id": "token-error", "label": "ลิงก์หมดอายุ"}, {"id": "done", "label": "สำเร็จ"}]}); } },
+      'ScreenNewChat': { label: "New chat", el: function () { return h(B.ScreenFrame, {route: 'chat', states: [{"id": "default", "label": "เริ่มต้น"}, {"id": "plus-menu", "label": "เมนู +"}, {"id": "library", "label": "เพิ่มจากไลบรารี"}, {"id": "attach-reading", "label": "ไฟล์กำลังอ่าน"}, {"id": "attach-ready", "label": "ไฟล์พร้อม"}, {"id": "attach-failed", "label": "ชนิดไฟล์ไม่อนุญาต"}, {"id": "attach-too-big", "label": "เกิน 5 MB"}, {"id": "knowledge-doc", "label": "เลือกเอกสาร 1 ฉบับ"}, {"id": "web", "label": "ค้นเว็บเปิด"}, {"id": "no-permission", "label": "ไม่มี chat.use"}], roles: true}); } },
+      'ScreenChatThread': { label: "Chat thread", el: function () { return h(B.ScreenFrame, {route: 'thread', states: [{"id": "answered", "label": "ตอบพร้อม citation"}, {"id": "streaming", "label": "กำลังตอบ (Stop)"}, {"id": "source-open", "label": "เปิดแหล่งอ้างอิง"}, {"id": "web", "label": "ค้นเว็บ"}, {"id": "error", "label": "ตอบไม่สำเร็จ"}, {"id": "quota", "label": "โควตาหมด"}, {"id": "drawer", "label": "Mobile drawer", "variant": "answered", "drawer": true, "note": "สลับ Device เป็น Mobile เพื่อดูเมนูซ้าย + Recent chats ในรูปแบบ Drawer"}]}); } },
+      'ScreenKnowledge': { label: "Knowledge", el: function () { return h(B.ScreenFrame, {route: 'knowledge', states: [{"id": "default", "label": "รายการ"}, {"id": "uploading", "label": "OCR กำลังทำ"}, {"id": "loading", "label": "กำลังโหลด"}, {"id": "empty", "label": "ยังไม่มีเอกสาร"}, {"id": "share", "label": "แชร์ให้กลุ่ม"}, {"id": "versions", "label": "เวอร์ชัน"}, {"id": "delete", "label": "ยืนยันลบ"}, {"id": "toast-error", "label": "Toast ผิดพลาด"}, {"id": "no-permission", "label": "ไม่มี documents.use"}]}); } },
+      'ScreenCreateFiles': { label: "Create files", el: function () { return h(B.ScreenFrame, {route: 'files', states: [{"id": "default", "label": "รายการงาน"}, {"id": "generating", "label": "กำลังส่งงาน"}, {"id": "empty", "label": "ยังไม่มีไฟล์"}]}); } },
+      'ScreenOrgAccess': { label: "Organization", el: function () { return h(B.ScreenFrame, {route: 'org', states: [{"id": "default", "label": "ผู้ใช้"}, {"id": "create-user", "label": "สร้างผู้ใช้"}, {"id": "temp-password", "label": "รหัสชั่วคราว"}, {"id": "suspend", "label": "ยืนยันระงับ"}, {"id": "groups", "label": "กลุ่มและสิทธิ์"}, {"id": "models", "label": "โมเดล"}, {"id": "audit", "label": "Audit log"}, {"id": "data-policy", "label": "นโยบายข้อมูล"}, {"id": "cleanup-confirm", "label": "ยืนยัน Cleanup"}, {"id": "member", "label": "ไม่มีสิทธิ์", "variant": "default", "role": "member"}]}); } },
+      'ScreenUsage': { label: "AI Usage & Limits", el: function () { return h(B.ScreenFrame, {route: 'usage', states: [{"id": "default", "label": "ปกติ"}, {"id": "near-limit", "label": "ใกล้ครบโควตา"}, {"id": "member", "label": "ไม่มี usage.manage", "variant": "default", "role": "member"}]}); } },
+      'ScreenSettings': { label: "Settings", el: function () { return h(B.ScreenFrame, {route: 'settings', states: [{"id": "default", "label": "ค่าเริ่มต้น"}, {"id": "forced-password", "label": "บังคับเปลี่ยนรหัส"}, {"id": "password-error", "label": "รหัสปัจจุบันผิด"}, {"id": "saved", "label": "บันทึกแล้ว"}]}); } },
+      'Prototype': { label: "Prototype (2 flows)", el: function () { return h(B.Prototype, {flow: 'knowledge'}); } },
+  };
+  function Viewer() {
+    var ids = Object.keys(SCREENS);
+    var start = (location.hash || '').slice(1);
+    var s = React.useState(SCREENS[start] ? start : ids[0]), cur = s[0], set = s[1];
+    return h('div', null,
+      h('div', { className: 'nav' }, h('strong', null, 'BenterAI screens'), ids.map(function (id) {
+        return h('button', { key: id, 'aria-pressed': cur === id ? 'true' : 'false', onClick: function () { location.hash = id; set(id); } }, SCREENS[id].label);
+      })),
+      h('div', { key: cur }, SCREENS[cur].el()));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Viewer));
+</script>
+</body>
+</html>
